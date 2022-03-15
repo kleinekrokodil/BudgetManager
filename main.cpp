@@ -14,7 +14,10 @@ void ParseAndProcessQuery(BudgetManager& manager, string_view line) {
         manager.Earn(query.GetdateFrom(), query.GetDateTo(), query.GetModificator());
     }
     if(query.GetType() == "PayTax"sv){
-        manager.PayTax(query.GetdateFrom(), query.GetDateTo());
+        manager.PayTax(query.GetdateFrom(), query.GetDateTo(), static_cast<int>(query.GetModificator()));
+    }
+    if(query.GetType() == "Spend"sv){
+        manager.Spend(query.GetdateFrom(), query.GetDateTo(), query.GetModificator());
     }
 }
 
